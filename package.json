@@ -17,9 +17,8 @@
         "resolve-url-loader": "^2.3.1",
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
-        "serverless": "^1.58.0"
-    },
-    "dependencies": {
-        "serverless-dotenv-plugin": "https://github.com/harmenjanssen/serverless-dotenv-plugin/"
+        "serverless": "^1.58.0",
+        "serverless-dotenv-plugin": "https://github.com/harmenjanssen/serverless-dotenv-plugin/",
+        "serverless-prune-plugin": "^1.4.1"
     }
 }
