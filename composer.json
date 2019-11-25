@@ -13,7 +13,8 @@
         "fideloper/proxy": "^4.0",
         "laravel/framework": "^6.2",
         "laravel/tinker": "^1.0",
-        "sentry/sentry-laravel": "^1.5"
+        "sentry/sentry-laravel": "^1.5",
+        "spatie/laravel-cors": "^1.6"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
@@ -58,6 +59,7 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
-        ]
+        ],
+        "test": "vendor/bin/phpunit"
     }
 }

@@ -1,0 +1,49 @@
+service: YourNameHere
+
+provider:
+    name: aws
+    region: ${env:AWS_LAMBDA_REGION}
+    stage: ${opt:stage, 'development'}
+    runtime: provided
+    role: ${env:SERVERLESS_ROLE}
+    timeout: 30
+    profile: ${env:AWS_PROFILE}
+    deploymentBucket:
+        name: ${env:SERVERLESS_DEPLOYMENTS_BUCKET}
+    environment:
+        APP_STORAGE: '/tmp'
+
+package:
+    exclude:
+        - .env
+        - .env.staging
+        - .env.production
+
+functions:
+    main:
+        handler: public/index.php
+        description: "Process all HTTP requests."
+        timeout: 28 # in seconds (API Gateway has a timeout of 29 seconds)
+        layers:
+            - ${bref:layer.php-73-fpm}
+        events:
+            - http:
+                path: /{proxy+}
+                method: any
+                cors: true
+    artisan:
+        handler: artisan
+        description: "Process console commands and cron."
+        timeout: 120 # in seconds
+        layers:
+            - ${bref:layer.php-73}
+            - ${bref:layer.console}
+        #events:
+            #- schedule:
+                #rate: cron(0 0 * * ? *)
+                #input:
+                    #cli: "app:my-console-command"
+
+plugins:
+  - serverless-dotenv-plugin
+  - ./vendor/bref/bref
