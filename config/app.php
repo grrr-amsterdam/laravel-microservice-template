@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+        Sentry\Laravel\ServiceProvider::class,
 
         /*
          * Application Service Providers...
