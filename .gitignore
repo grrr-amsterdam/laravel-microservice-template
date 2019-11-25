@@ -5,8 +5,11 @@
 /vendor
 .env
 .env.backup
+.env.staging
+.env.production
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+/.serverless
