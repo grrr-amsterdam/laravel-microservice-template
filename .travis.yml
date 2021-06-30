@@ -9,6 +9,8 @@ install:
 before_script:
 - chmod +x vendor/bin/phpunit
 - phpenv config-rm xdebug.ini
+- cp .env.example .env
+- php artisan key:generate
 script:
 - composer test
 notifications:
