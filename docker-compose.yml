@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  php:
+    build:
+      context: docker/php
+    volumes:
+      - codebase:/app
+    ports:
+      - "8000:8000"
+
+volumes:
+  codebase:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=host.docker.internal,rw,nolock,hard,nointr,nfsvers=3
+      device: ":$PWD"
